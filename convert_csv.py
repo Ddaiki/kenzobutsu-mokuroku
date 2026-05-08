@@ -26,9 +26,9 @@ def main():
             jp_no = row.get("JP番号", "").strip()
 
             if ncid:
-                ndl_url = f"https://ndlsearch.ndl.go.jp/books/{ncid}"
+                ndl_url = f"https://ndlsearch.ndl.go.jp/search?q={ncid}"
             elif jp_no:
-                ndl_url = f"https://ndlsearch.ndl.go.jp/search?f-jbn={jp_no}"
+                ndl_url = f"https://ndlsearch.ndl.go.jp/search?q={jp_no}"
             else:
                 ndl_url = ""
 
