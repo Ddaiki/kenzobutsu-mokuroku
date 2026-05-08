@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>建造物調査報告書データベース — 奈文研総目録</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+  <div class="header-inner">
+    <div class="header-title">
+      <h1>建造物調査報告書データベース</h1>
+      <p class="header-sub">奈良文化財研究所「建造物調査報告書総目録」より — 全 <span id="total-count">—</span> 件</p>
+    </div>
+    <div class="legend">
+      <span class="badge badge-digital">デジタル公開</span>
+      <span class="badge badge-catalog">NDL所蔵（申請可）</span>
+      <span class="badge badge-unknown">未確認</span>
+    </div>
+  </div>
+</header>
+
+<main>
+  <aside class="filter-panel">
+    <h2>絞り込み</h2>
+
+    <label for="search">キーワード検索</label>
+    <input id="search" type="search" placeholder="書名・著者・機関名…" autocomplete="off">
+
+    <label for="pref-filter">都道府県</label>
+    <select id="pref-filter">
+      <option value="">すべて</option>
+    </select>
+
+    <label>公開状況</label>
+    <div class="checkbox-group">
+      <label><input type="checkbox" class="status-cb" value="digital" checked> デジタル公開</label>
+      <label><input type="checkbox" class="status-cb" value="ndl_catalog" checked> NDL所蔵</label>
+      <label><input type="checkbox" class="status-cb" value="unknown" checked> 未確認</label>
+    </div>
+
+    <label>発行年</label>
+    <div class="year-range">
+      <input id="year-from" type="number" placeholder="開始" min="1900" max="2030">
+      <span>〜</span>
+      <input id="year-to" type="number" placeholder="終了" min="1900" max="2030">
+    </div>
+
+    <button id="reset-btn">リセット</button>
+    <p id="result-count" class="result-count"></p>
+  </aside>
+
+  <section class="table-section">
+    <div class="table-controls">
+      <span class="sort-label">並び順：</span>
+      <select id="sort-select">
+        <option value="no-asc">No. 昇順</option>
+        <option value="year-desc">発行年 新しい順</option>
+        <option value="year-asc">発行年 古い順</option>
+        <option value="pref-asc">都道府県</option>
+      </select>
+      <span class="per-page-label">表示件数：</span>
+      <select id="per-page">
+        <option value="50">50件</option>
+        <option value="100">100件</option>
+        <option value="200">200件</option>
+      </select>
+    </div>
+
+    <div class="table-wrap">
+      <table id="main-table">
+        <thead>
+          <tr>
+            <th class="col-no">No.</th>
+            <th class="col-status">状況</th>
+            <th class="col-pref">都道府県</th>
+            <th class="col-title">書名</th>
+            <th class="col-author">編著者</th>
+            <th class="col-year">発行年</th>
+            <th class="col-links">リンク</th>
+          </tr>
+        </thead>
+        <tbody id="tbody"></tbody>
+      </table>
+    </div>
+
+    <div class="pagination" id="pagination"></div>
+  </section>
+</main>
+
+<!-- 詳細モーダル -->
+<div id="modal-overlay" class="modal-overlay hidden" role="dialog" aria-modal="true">
+  <div class="modal-box">
+    <button class="modal-close" id="modal-close">✕</button>
+    <div id="modal-content"></div>
+  </div>
+</div>
+
+<footer>
+  <p>データ出典：奈良文化財研究所「建造物調査報告書総目録」／ NDL リンク：国立国会図書館サーチ・デジタルコレクション</p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
