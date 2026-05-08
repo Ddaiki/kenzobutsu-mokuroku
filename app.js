@@ -310,7 +310,7 @@ resetBtn.addEventListener("click", () => {
   prefEl.value   = "";
   yearFromEl.value = "";
   yearToEl.value   = "";
-  statusCbs().forEach(cb => cb.checked = true);
+  statusCbs().forEach(cb => cb.checked = cb.value === "digital");
   sortEl.value    = "no-asc";
   perPageEl.value = "50";
   perPage = 50;
