@@ -1,3 +1,8 @@
 __pycache__/
 *.py[cod]
 .DS_Store
+enrich_log.txt
+kenzobutsu_mokuroku.csv
+138353_1_*.pdf
+extract_pdf.py
+push_to_sheets.py
