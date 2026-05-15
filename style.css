@@ -67,6 +67,22 @@ h1 {
   gap: 8px;
   flex-wrap: wrap;
 }
+.header-links {
+  margin-left: auto;
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+.header-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  color: #b0bcd4;
+  text-decoration: none;
+  font-size: .8rem;
+  transition: color .15s;
+}
+.header-link:hover { color: #fff; }
 
 /* ===== Badges ===== */
 .badge {
