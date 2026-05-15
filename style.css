@@ -77,12 +77,19 @@ h1 {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  color: #b0bcd4;
+  color: rgba(255,255,255,0.75);
   text-decoration: none;
   font-size: .8rem;
-  transition: color .15s;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 14px;
+  padding: 3px 10px;
+  transition: color .15s, border-color .15s, background .15s;
 }
-.header-link:hover { color: #fff; }
+.header-link:hover {
+  color: #fff;
+  border-color: rgba(255,255,255,0.7);
+  background: rgba(255,255,255,0.1);
+}
 
 /* ===== Badges ===== */
 .badge {
@@ -471,4 +478,5 @@ footer {
   .filter-panel { width: 100%; position: static; }
   .table-section { margin-left: 0; margin-top: 12px; }
   .col-author, .col-links { display: none; }
+  .header-links { margin-left: 0; width: 100%; }
 }
