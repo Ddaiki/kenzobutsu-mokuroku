@@ -63,14 +63,18 @@ h1 {
   margin-top: 2px;
 }
 .header-source {
-  display: inline-block;
+  display: block;
   margin-top: 5px;
-  font-size: .7rem;
-  color: #8a9bbf;
-  text-decoration: none;
+  font-size: .72rem;
+  color: rgba(255,255,255,0.7);
+  text-decoration: underline;
+  text-decoration-color: rgba(255,255,255,0.3);
   white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 100%;
 }
-.header-source:hover { color: #fff; text-decoration: underline; }
+.header-source:hover { color: #fff; text-decoration-color: rgba(255,255,255,0.8); }
 .legend {
   display: flex;
   gap: 8px;
