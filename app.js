@@ -115,17 +115,17 @@ function applyFilters() {
       const hay = (r.title + r.subtitle + r.author + r.editor + r.org + r.publisher).toLowerCase();
       if (!hay.includes(q)) return false;
     }
-    if (r.pub_date) {
-      const y = parseInt(r.pub_date.slice(0, 4));
-      if (y < yFrom || y > yTo) return false;
+    if (r.pub_year != null) {
+      if (r.pub_year < yFrom || r.pub_year > yTo) return false;
     }
     return true;
   });
 
+  const yearVal = r => (r.pub_year != null ? r.pub_year : 9999);
   filtered.sort((a, b) => {
     switch (sort) {
-      case "year-desc": return (b.pub_date || "").localeCompare(a.pub_date || "");
-      case "year-asc":  return (a.pub_date || "").localeCompare(b.pub_date || "");
+      case "year-desc": return yearVal(b) - yearVal(a);
+      case "year-asc":  return yearVal(a) - yearVal(b);
       case "pref-asc":  return (a.pref || "").localeCompare(b.pref || "", "ja");
       default:          return a.no - b.no;
     }
@@ -155,7 +155,9 @@ function render() {
 
     const st = statusLabel[r.status] || statusLabel.unknown;
     const titleFull = [r.title, r.vol ? `第${r.vol}` : ""].filter(Boolean).join(" ");
-    const yearStr   = r.pub_date ? r.pub_date.slice(0, 4) : "—";
+    const yearStr   = r.pub_date
+      ? (r.pub_date.includes("頃") ? r.pub_date : r.pub_date.slice(0, 4))
+      : "—";
 
     tr.innerHTML = `
       <td class="col-no">${r.no}</td>
